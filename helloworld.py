@@ -29,3 +29,9 @@ class Nlp:
         treat = self.lang(sentence)
         token = treat[1]
         return token.text
+
+    def get_slice(self, sentence: str, from_: int, to_: int) -> str:
+        """Nlp.get_slice() takes an str obj and return a slice of it int str"""
+        treat = self.lang(sentence)
+        spaning = treat[int(from_):int(to_)]
+        return spaning.text

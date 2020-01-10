@@ -23,6 +23,11 @@ class TestNlp(unittest.TestCase):
         treat = lang.get_index('hi i am a kitty')
         self.assertIsInstance(treat, str)
 
+    def test_get_slice(self):
+        """Test Nlp.get_slice() returns str"""
+        lang = Nlp('en')
+        treat = lang.get_slice('Hello kitty cat', 1, 4)
+        self.assertIsInstance(treat, str)
 
 if __name__ == '__main__':
     unittest.main()
