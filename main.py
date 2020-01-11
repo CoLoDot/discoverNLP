@@ -3,7 +3,7 @@ from helloworld import Nlp
 if __name__ == '__main__':
     # init class with english or french language
     # 'fr' or 'en'
-    nlp = Nlp(lang='en')
+    nlp = Nlp(lang='fr')
 
     if nlp.lang == 'fr':
         print(nlp.french('Bonjour, je suis un chaton'))

@@ -28,6 +28,7 @@ class TestNlp(unittest.TestCase):
         lang = Nlp('en')
         treat = lang.get_slice('Hello kitty cat', 1, 4)
         self.assertIsInstance(treat, str)
+        self.assertEqual(treat, 'kitty cat')
 
 if __name__ == '__main__':
     unittest.main()
