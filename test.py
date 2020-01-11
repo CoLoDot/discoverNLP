@@ -30,5 +30,15 @@ class TestNlp(unittest.TestCase):
         self.assertIsInstance(treat, str)
         self.assertEqual(treat, 'kitty cat')
 
+    def test_attributes(self):
+        lang = Nlp('en')
+        treat = lang.attributes("I am a doggy !")
+        self.assertIsInstance(treat, list)
+        self.assertEqual(treat[0], [0, 1, 2, 3, 4])
+        self.assertEqual(treat[1], ['I', 'am', 'a', 'doggy', '!'])
+        self.assertEqual(treat[2], [True, True, True, True, False])
+        self.assertEqual(treat[3], [False, False, False, False, True])
+        self.assertEqual(treat[4], [False, False, False, False, False])
+
 if __name__ == '__main__':
     unittest.main()

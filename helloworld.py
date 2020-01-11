@@ -35,3 +35,12 @@ class Nlp:
         treat = self.lang(sentence)
         spaning = treat[int(from_):int(to_)]
         return spaning.text
+
+    def attributes(self, sentence: str) -> []:
+        treat = self.lang(sentence)
+        treat_id = [token.i for token in treat]
+        treat_text = [token.text for token in treat]
+        treat_is_alpha = [token.is_alpha for token in treat]
+        treat_is_punct = [token.is_punct for token in treat]
+        treat_like_num = [token.like_num for token in treat]
+        return [treat_id, treat_text, treat_is_alpha, treat_is_punct, treat_like_num]
