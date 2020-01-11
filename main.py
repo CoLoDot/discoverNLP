@@ -14,3 +14,4 @@ if __name__ == '__main__':
         print(nlp.get_index("Cute Kitten !"))
         print(nlp.get_slice("Cute Kitten !", 1, 4))
         print(nlp.attributes("I am a doggy !"))
+        print(nlp.check_percentages('There is 90% of population that...'))

@@ -44,3 +44,11 @@ class Nlp:
         treat_is_punct = [token.is_punct for token in treat]
         treat_like_num = [token.like_num for token in treat]
         return [treat_id, treat_text, treat_is_alpha, treat_is_punct, treat_like_num]
+
+    def check_percentages(self, sentence: str) -> str:
+        treat = self.lang(sentence)
+        for element in treat:
+            if element.like_num:
+                next = treat[element.i + 1]
+                if next.text == '%':
+                    return "percentage : " + element.text + " %"

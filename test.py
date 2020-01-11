@@ -40,5 +40,10 @@ class TestNlp(unittest.TestCase):
         self.assertEqual(treat[3], [False, False, False, False, True])
         self.assertEqual(treat[4], [False, False, False, False, False])
 
+    def test_percentages(self):
+        lang = Nlp('en')
+        treat = lang.check_percentages('hello, 50%')
+        self.assertEqual(treat, 'percentage : 50 %')
+
 if __name__ == '__main__':
     unittest.main()
