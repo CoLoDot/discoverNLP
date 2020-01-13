@@ -40,10 +40,11 @@ class Nlp:
         treat = self.lang(sentence)
         treat_id = [token.i for token in treat]
         treat_text = [token.text for token in treat]
+        treat_dependency = [token.dep_ for token in treat]
         treat_is_alpha = [token.is_alpha for token in treat]
         treat_is_punct = [token.is_punct for token in treat]
         treat_like_num = [token.like_num for token in treat]
-        return [treat_id, treat_text, treat_is_alpha, treat_is_punct, treat_like_num]
+        return [treat_id, treat_text, treat_dependency, treat_is_alpha, treat_is_punct, treat_like_num]
 
     def check_percentages(self, sentence: str) -> str:
         treat = self.lang(sentence)
@@ -52,3 +53,7 @@ class Nlp:
                 next = treat[element.i + 1]
                 if next.text == '%':
                     return "percentage : " + element.text + " %"
+
+    def named_entities(self, sentence: str) -> []:
+        treat = self.lang(sentence)
+        return [(t.text, t.label_) for t in treat.ents]

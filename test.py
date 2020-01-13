@@ -36,14 +36,20 @@ class TestNlp(unittest.TestCase):
         self.assertIsInstance(treat, list)
         self.assertEqual(treat[0], [0, 1, 2, 3, 4])
         self.assertEqual(treat[1], ['I', 'am', 'a', 'doggy', '!'])
-        self.assertEqual(treat[2], [True, True, True, True, False])
-        self.assertEqual(treat[3], [False, False, False, False, True])
-        self.assertEqual(treat[4], [False, False, False, False, False])
+        self.assertEqual(treat[2], ['nsubj', 'ROOT', 'det', 'attr', 'punct'])
+        self.assertEqual(treat[3], [True, True, True, True, False])
+        self.assertEqual(treat[4], [False, False, False, False, True])
+        self.assertEqual(treat[5], [False, False, False, False, False])
 
     def test_percentages(self):
         lang = Nlp('en')
         treat = lang.check_percentages('hello, 50%')
         self.assertEqual(treat, 'percentage : 50 %')
+
+    def test_named_entities(self):
+        lang = Nlp('en')
+        treat = lang.named_entities('I work at Apple and Google')
+        self.assertEqual(treat, [('Apple', 'ORG'), ('Google', 'ORG')])
 
 if __name__ == '__main__':
     unittest.main()
