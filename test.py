@@ -1,5 +1,6 @@
 import unittest
 from helloworld import Nlp
+from match import Match
 
 
 class TestNlp(unittest.TestCase):
@@ -50,6 +51,15 @@ class TestNlp(unittest.TestCase):
         lang = Nlp('en')
         treat = lang.named_entities('I work at Apple and Google')
         self.assertEqual(treat, [('Apple', 'ORG'), ('Google', 'ORG')])
+
+
+class TestMatch(unittest.TestCase):
+
+    def test_process_input(self):
+        m = Match()
+        process = m.process_pattern_on_input('Puppies belong to Elizabeth II', [{'TEXT': 'Elizabeth'}, {'TEXT': 'II'}])
+        expect = 'Elizabeth II'
+        self.assertEqual(process, expect)
 
 if __name__ == '__main__':
     unittest.main()

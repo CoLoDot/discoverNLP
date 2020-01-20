@@ -50,8 +50,8 @@ class Nlp:
         treat = self.lang(sentence)
         for element in treat:
             if element.like_num:
-                next = treat[element.i + 1]
-                if next.text == '%':
+                next_elm = treat[element.i + 1]
+                if next_elm.text == '%':
                     return "percentage : " + element.text + " %"
 
     def named_entities(self, sentence: str) -> []:
