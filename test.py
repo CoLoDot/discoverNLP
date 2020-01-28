@@ -1,6 +1,7 @@
 import unittest
 from helloworld import Nlp
 from match import Match
+from semantic_similarity import semantic_similarities_docs
 
 
 class TestNlp(unittest.TestCase):
@@ -53,8 +54,7 @@ class TestNlp(unittest.TestCase):
         self.assertEqual(treat, [('Apple', 'ORG'), ('Google', 'ORG')])
 
     def test_semantic_similarity(self):
-        lang = Nlp('en')
-        process = lang.semantic_similarities_docs("Hello i am a cat", "Hello i am a dog")
+        process = semantic_similarities_docs("Hello i am a cat", "Hello i am a dog")
         self.assertEqual(process, 0.979388603073431)
 
 
