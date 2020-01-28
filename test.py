@@ -2,7 +2,7 @@ import unittest
 from helloworld import Nlp
 from match import Match
 from semantic_similarity import semantic_similarities_docs
-
+from phrase_matcher import matcher_golden_retriever
 
 class TestNlp(unittest.TestCase):
     """Test Nlp class"""
@@ -57,6 +57,9 @@ class TestNlp(unittest.TestCase):
         process = semantic_similarities_docs("Hello i am a cat", "Hello i am a dog")
         self.assertEqual(process, 0.979388603073431)
 
+    def test_phrase_matcher(self):
+        process = matcher_golden_retriever("Cute Golden Retriever !!")
+        self.assertEqual(process, "Golden Retriever")
 
 class TestMatch(unittest.TestCase):
 
