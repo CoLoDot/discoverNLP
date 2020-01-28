@@ -1,6 +1,5 @@
 import spacy
 
-
 class Nlp:
     """'Nlp' is for Natural Language Processing.
     AVAILABLE LANGUAGES : french or english"""
@@ -12,7 +11,7 @@ class Nlp:
         if lang == 'fr':
             self.lang = spacy.load('fr_core_news_sm')
         elif lang == 'en':
-            self.lang = spacy.load('en_core_web_sm')
+            self.lang = spacy.load('en_core_web_md')
 
     def french(self, sentence: str) -> []:
         """Nlp.french() takes an str obj and returns a list"""
@@ -57,3 +56,8 @@ class Nlp:
     def named_entities(self, sentence: str) -> []:
         treat = self.lang(sentence)
         return [(t.text, t.label_) for t in treat.ents]
+
+    def semantic_similarities_docs(self, doc_1: str, doc_2: str) -> float:
+        process_1 = self.lang(doc_1)
+        process_2 = self.lang(doc_2)
+        return process_1.similarity(process_2)

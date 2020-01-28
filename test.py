@@ -52,6 +52,11 @@ class TestNlp(unittest.TestCase):
         treat = lang.named_entities('I work at Apple and Google')
         self.assertEqual(treat, [('Apple', 'ORG'), ('Google', 'ORG')])
 
+    def test_semantic_similarity(self):
+        lang = Nlp('en')
+        process = lang.semantic_similarities_docs("Hello i am a cat", "Hello i am a dog")
+        self.assertEqual(process, 0.979388603073431)
+
 
 class TestMatch(unittest.TestCase):
 

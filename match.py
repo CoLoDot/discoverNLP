@@ -18,3 +18,19 @@ class Match:
             span = doc[start:end]
             print(span.text)
             return span.text
+
+    def match_lexical_attr(self, sentence: str) -> str:
+        pattern = [
+            {'IS_DIGIT': True},
+            {'LOWER': 'fifa'},
+            {'LOWER': 'world'},
+            {'LOWER': 'cup'},
+            {'IS_PUNCT': True}
+        ]
+        self.matcher.add('PATTERN_lexical', None, pattern)
+        doc = self.match_lang(sentence)
+        matches = self.matcher(doc)
+        for span_id, start, end in matches:
+            span = doc[start:end]
+            print(span)
+            return span
